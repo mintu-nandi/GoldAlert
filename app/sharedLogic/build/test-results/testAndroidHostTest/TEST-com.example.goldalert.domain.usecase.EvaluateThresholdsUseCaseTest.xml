@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.goldalert.domain.usecase.EvaluateThresholdsUseCaseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-16T21:03:52.550Z" hostname="Mac.mynet" time="0.031">
-  <properties/>
-  <testcase name="testAlertIsTriggeredWhenPriceCrossesAbove" classname="com.example.goldalert.domain.usecase.EvaluateThresholdsUseCaseTest" time="0.03"/>
-  <testcase name="testAlertIsTriggeredWhenPriceDropsBelow" classname="com.example.goldalert.domain.usecase.EvaluateThresholdsUseCaseTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

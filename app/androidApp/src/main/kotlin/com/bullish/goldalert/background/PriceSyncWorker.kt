@@ -6,6 +6,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import androidx.glance.appwidget.updateAll
 import com.example.goldalert.domain.usecase.SyncGoldPriceUseCase
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -22,11 +23,17 @@ class PriceSyncWorker(
         Log.d("PriceSyncWorker", "🟢 Android: Background PriceSyncWorker triggered")
         val result = syncGoldPriceUseCase()
         
-        // Reschedule itself to execute again in 5 minutes
+        // Reschedule itself to execute again in 1 minute
         reschedule(applicationContext)
         
         return if (result.isSuccess) {
             Log.d("PriceSyncWorker", "🟢 Android: Background PriceSyncWorker sync succeeded")
+            // Update widget with new price
+            try {
+                com.bullish.goldalert.widget.GoldWidget().updateAll(applicationContext)
+            } catch (e: Exception) {
+                Log.e("PriceSyncWorker", "🔴 Failed to update widget", e)
+            }
             Result.success()
         } else {
             Log.e("PriceSyncWorker", "🔴 Android: Background PriceSyncWorker sync failed: ${result.exceptionOrNull()?.message}")
@@ -38,17 +45,17 @@ class PriceSyncWorker(
         private const val TAG = "PriceSyncWorker"
 
         fun enqueueInitial(context: Context) {
-            Log.d(TAG, "🟢 Android: Enqueuing initial 5-minute background refresh task")
+            Log.d(TAG, "🟢 Android: Enqueuing initial 1-minute background refresh task")
             val workRequest = OneTimeWorkRequest.Builder(PriceSyncWorker::class.java)
-                .setInitialDelay(5, TimeUnit.MINUTES)
+                .setInitialDelay(1, TimeUnit.MINUTES)
                 .build()
             WorkManager.getInstance(context).enqueue(workRequest)
         }
 
         private fun reschedule(context: Context) {
-            Log.d(TAG, "🟢 Android: Rescheduling next 5-minute background refresh task")
+            Log.d(TAG, "🟢 Android: Rescheduling next 1-minute background refresh task")
             val workRequest = OneTimeWorkRequest.Builder(PriceSyncWorker::class.java)
-                .setInitialDelay(5, TimeUnit.MINUTES)
+                .setInitialDelay(1, TimeUnit.MINUTES)
                 .build()
             WorkManager.getInstance(context).enqueue(workRequest)
         }

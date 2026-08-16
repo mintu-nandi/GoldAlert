@@ -18,6 +18,15 @@ import com.bullish.goldalert.ui.dashboard.DashboardScreen
 import org.koin.android.ext.android.inject
 import org.koin.compose.KoinContext
 
+import android.Manifest
+import android.os.Build
+import android.content.pm.PackageManager
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
+
 val DarkBg = Color(0xFF0F0F11)
 val SlateCard = Color(0xFF1B1B1F)
 val GoldLight = Color(0xFFFFD700)
@@ -54,8 +63,22 @@ fun App(
     candleChartViewModel: CandleChartViewModel
 ) {
     val latestPrice by dashboardViewModel.latestPrice.collectAsState()
+    val priceHistory by dashboardViewModel.priceHistory.collectAsState()
     val syncState by dashboardViewModel.syncState.collectAsState()
     val thresholds by thresholdViewModel.thresholds.collectAsState()
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        val context = LocalContext.current
+        val launcher = rememberLauncherForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { _ -> }
+        
+        LaunchedEffect(Unit) {
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+    }
 
     val navController = rememberNavController()
 
@@ -74,6 +97,7 @@ fun App(
             composable("dashboard") {
                 DashboardScreen(
                     latestPrice = latestPrice,
+                    priceHistory = priceHistory,
                     syncState = syncState,
                     thresholds = thresholds,
                     onRefresh = { dashboardViewModel.refreshPrice() },

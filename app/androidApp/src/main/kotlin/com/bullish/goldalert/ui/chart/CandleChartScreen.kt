@@ -60,6 +60,7 @@ fun CandleChartScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(DarkBg)
+            .systemBarsPadding()
             .padding(top = 16.dp)
     ) {
         // 1. Navigation Header
@@ -230,22 +231,32 @@ fun CandleChartCanvas(
         modifier = Modifier
             .fillMaxSize()
             .pointerInput(candles) {
+                val paddingRightPx = 60.sp.toPx()
                 detectTapGestures(
                     onPress = { offset ->
                         touchX = offset.x
-                        val candleWidth = size.width / candles.size
-                        val index = (offset.x / candleWidth).toInt().coerceIn(0, candles.lastIndex)
+                        val chartWidth = size.width - paddingRightPx
+                        val effectiveCandleCount = maxOf(candles.size, 20)
+                        val candleSlotWidth = chartWidth / effectiveCandleCount
+                        val startOffsetIndex = if (candles.size < effectiveCandleCount) effectiveCandleCount - candles.size else 0
+                        val rawIndex = (offset.x / candleSlotWidth).toInt() - startOffsetIndex
+                        val index = rawIndex.coerceIn(0, candles.lastIndex)
                         onHoverIndexChanged(index)
                     }
                 )
             }
             .pointerInput(candles) {
+                val paddingRightPx = 60.sp.toPx()
                 detectTransformGestures { _, panOffset, _, _ ->
-                    val currentX = touchX ?: (size.width / 2f)
+                    val chartWidth = size.width - paddingRightPx
+                    val currentX = touchX ?: (chartWidth / 2f)
                     val newX = currentX + panOffset.x
                     touchX = newX
-                    val candleWidth = size.width / candles.size
-                    val index = (newX / candleWidth).toInt().coerceIn(0, candles.lastIndex)
+                    val effectiveCandleCount = maxOf(candles.size, 20)
+                    val candleSlotWidth = chartWidth / effectiveCandleCount
+                    val startOffsetIndex = if (candles.size < effectiveCandleCount) effectiveCandleCount - candles.size else 0
+                    val rawIndex = (newX / candleSlotWidth).toInt() - startOffsetIndex
+                    val index = rawIndex.coerceIn(0, candles.lastIndex)
                     onHoverIndexChanged(index)
                 }
             }
@@ -290,12 +301,15 @@ fun CandleChartCanvas(
         }
 
         val candleCount = candles.size
-        val candleSlotWidth = chartWidth / candleCount
-        val candleBodyWidth = (candleSlotWidth * 0.7f).coerceAtLeast(3f)
+        val effectiveCandleCount = maxOf(candleCount, 20)
+        val candleSlotWidth = chartWidth / effectiveCandleCount
+        val candleBodyWidth = (candleSlotWidth * 0.7f).coerceIn(3f, 40f)
+        val startOffsetIndex = if (candleCount < effectiveCandleCount) effectiveCandleCount - candleCount else 0
 
         // Draw candles
         candles.forEachIndexed { index, candle ->
-            val x = (index * candleSlotWidth) + (candleSlotWidth / 2f)
+            val adjustedIndex = index + startOffsetIndex
+            val x = (adjustedIndex * candleSlotWidth) + (candleSlotWidth / 2f)
             val highY = priceToY(candle.high)
             val lowY = priceToY(candle.low)
             val openY = priceToY(candle.open)
@@ -356,9 +370,11 @@ fun CandleChartCanvas(
         // Draw Touch Crosshair
         touchX?.let { tx ->
             val clampedX = tx.coerceIn(0f, chartWidth)
-            val index = (clampedX / candleSlotWidth).toInt().coerceIn(0, candles.lastIndex)
+            val rawIndex = (clampedX / candleSlotWidth).toInt() - startOffsetIndex
+            val index = rawIndex.coerceIn(0, candles.lastIndex)
             val candle = candles[index]
-            val candleX = (index * candleSlotWidth) + (candleSlotWidth / 2f)
+            val adjustedIndex = index + startOffsetIndex
+            val candleX = (adjustedIndex * candleSlotWidth) + (candleSlotWidth / 2f)
             val closeY = priceToY(candle.close)
 
             // Vertical crosshair line

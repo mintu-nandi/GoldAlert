@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Solid Background -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#0F172A" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
     
-    <solid android:color="#0F172A" />
-    
-    <!-- 2dp golden color border -->
-    <stroke 
-        android:width="2dp" 
-        android:color="#EAB308" />
-    
-    <!-- Rounded corners (16dp is a standard rounded corner for widgets) -->
-    <corners android:radius="16dp" />
-    
-</shape>
+    <!-- Border inset so it doesn't get clipped by the system bounds -->
+    <item android:top="1dp" android:bottom="1dp" android:left="1dp" android:right="1dp">
+        <shape android:shape="rectangle">
+            <!-- 2dp golden color border -->
+            <stroke android:width="2dp" android:color="#EAB308" />
+            <corners android:radius="15dp" />
+        </shape>
+    </item>
+</layer-list>

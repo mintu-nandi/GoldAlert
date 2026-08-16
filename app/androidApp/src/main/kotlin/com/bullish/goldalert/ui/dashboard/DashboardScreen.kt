@@ -40,6 +40,7 @@ import com.example.goldalert.presentation.SyncState
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import com.example.goldalert.presentation.util.calculateDailyChange
 
 val DarkBg = Color(0xFF0F0F11)
 val SlateCard = Color(0xFF1B1B1F)
@@ -54,6 +55,7 @@ val TextMuted = Color(0xFF8E8E93)
 @Composable
 fun DashboardScreen(
     latestPrice: GoldPriceEntity?,
+    priceHistory: List<GoldPriceEntity>,
     syncState: SyncState,
     thresholds: List<ThresholdEntity>,
     onRefresh: () -> Unit,
@@ -98,7 +100,7 @@ fun DashboardScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 item {
-                    PriceFeedCard(latestPrice = latestPrice)
+                    PriceFeedCard(latestPrice = latestPrice, priceHistory = priceHistory)
                 }
 
                 item {
@@ -233,7 +235,7 @@ fun HeaderSection(
 }
 
 @Composable
-fun PriceFeedCard(latestPrice: GoldPriceEntity?) {
+fun PriceFeedCard(latestPrice: GoldPriceEntity?, priceHistory: List<GoldPriceEntity>) {
     val infiniteTransition = rememberInfiniteTransition()
     val glowAlpha by infiniteTransition.animateFloat(
         initialValue = 0.3f,
@@ -279,6 +281,27 @@ fun PriceFeedCard(latestPrice: GoldPriceEntity?) {
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
+
+                val (changeAmount, changePercent) = priceHistory.calculateDailyChange()
+                if (priceHistory.size > 1) {
+                    val isPositive = changeAmount >= 0
+                    val color = if (isPositive) GreenActive else RedActive
+                    val sign = if (isPositive) "+" else ""
+
+                    Surface(
+                        color = color.copy(alpha = 0.2f),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(
+                            text = String.format("%s%.2f (%.2f%%)", sign, changeAmount, changePercent),
+                            color = color,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(12.dp))
+                }
 
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

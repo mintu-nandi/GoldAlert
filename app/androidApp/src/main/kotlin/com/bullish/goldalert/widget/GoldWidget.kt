@@ -36,6 +36,10 @@ import com.example.goldalert.domain.repository.GoldRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
+import kotlinx.coroutines.flow.firstOrNull
+import androidx.glance.appwidget.updateAll
+import com.example.goldalert.presentation.util.calculateDailyChange
+
 class GoldWidget : GlanceAppWidget(), KoinComponent {
 
     private val repository: GoldRepository by inject()
@@ -50,15 +54,11 @@ class GoldWidget : GlanceAppWidget(), KoinComponent {
                     modifier = GlanceModifier
                         .fillMaxSize()
                         .appWidgetBackground()
-                        .cornerRadius(16.dp)
-                        .background(Color(0xFF0F172A))
+                        .background(ImageProvider(R.drawable.widget_bg_gold_border))
+                        .padding(16.dp)
                 ) {
                     Column(
-                        modifier = GlanceModifier
-                            .fillMaxSize()
-                            .padding(2.dp)
-                            .background(ImageProvider(R.drawable.widget_bg_gold_border))
-                            .padding(20.dp),
+                        modifier = GlanceModifier.fillMaxSize(),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
@@ -71,7 +71,7 @@ class GoldWidget : GlanceAppWidget(), KoinComponent {
                             )
                         )
                         
-                        Spacer(modifier = GlanceModifier.size(12.dp))
+                        Spacer(modifier = GlanceModifier.defaultWeight())
                         
                         val priceText = currentPrice?.let { "$${String.format("%.2f", it.pricePerOunce)}" } ?: "Loading..."
                         
@@ -79,18 +79,46 @@ class GoldWidget : GlanceAppWidget(), KoinComponent {
                             text = priceText,
                             style = TextStyle(
                                 color = androidx.glance.unit.ColorProvider(Color.White),
-                                fontSize = 32.sp,
+                                fontSize = 26.sp,
                                 fontWeight = FontWeight.Bold
-                            )
+                            ),
+                            maxLines = 1
                         )
                         
-                        Spacer(modifier = GlanceModifier.size(16.dp))
+                        if (latestPrices.size > 1) {
+                            val (changeAmount, changePercent) = latestPrices.calculateDailyChange()
+                            val isPositive = changeAmount >= 0
+                            val color = if (isPositive) Color(0xFF32CD32) else Color(0xFFEF5350)
+                            val sign = if (isPositive) "+" else ""
+
+                            Spacer(modifier = GlanceModifier.size(4.dp))
+                            
+                            Box(
+                                modifier = GlanceModifier
+                                    .background(color.copy(alpha = 0.2f))
+                                    .cornerRadius(8.dp)
+                                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = String.format("%s%.2f (%.2f%%)", sign, changeAmount, changePercent),
+                                    style = TextStyle(
+                                        color = androidx.glance.unit.ColorProvider(color),
+                                        fontSize = 12.sp,
+                                        fontWeight = FontWeight.Medium
+                                    )
+                                )
+                            }
+                        }
+                        
+                        Spacer(modifier = GlanceModifier.defaultWeight())
                         
                         Column(
                             modifier = GlanceModifier
                                 .fillMaxWidth()
                                 .background(Color(0xFF1E293B))
-                                .padding(vertical = 15.dp)
+                                .cornerRadius(8.dp)
+                                .padding(vertical = 8.dp)
                                 .clickable(actionRunCallback<RefreshAction>()),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalAlignment = Alignment.CenterHorizontally
@@ -119,6 +147,10 @@ class RefreshAction : ActionCallback, KoinComponent {
         glanceId: GlanceId,
         parameters: ActionParameters
     ) {
+        // Fetch new price
         repository.fetchAndSaveLatestPrice()
+        
+        // Explicitly trigger a UI update for the widget
+        GoldWidget().update(context, glanceId)
     }
 }
