@@ -91,8 +91,7 @@ class EvaluateThresholdsUseCaseTest {
         // Assertions
         assertNotNull(triggeredTitle)
         assertEquals("Gold Alert!", triggeredTitle)
-        assertTrue(triggeredBody!!.contains("rose above $2000.0"))
-        assertTrue(triggeredBody!!.contains("Current: $2010.0"))
+        assertTrue(triggeredBody!!.contains("threshold limit: $2000.0 (Sell)"))
         
         // Assert database is updated (deactivated)
         assertEquals(1, repository.updatedThresholds.size)
@@ -138,8 +137,7 @@ class EvaluateThresholdsUseCaseTest {
         // Assertions
         assertNotNull(triggeredTitle)
         assertEquals("Gold Alert!", triggeredTitle)
-        assertTrue(triggeredBody!!.contains("fell below $1900.0"))
-        assertTrue(triggeredBody!!.contains("Current: $1890.0"))
+        assertTrue(triggeredBody!!.contains("threshold limit: $1900.0 (Buy)"))
         
         // Assert database is updated (deactivated)
         assertEquals(1, repository.updatedThresholds.size)

@@ -30,13 +30,12 @@ class EvaluateThresholdsUseCase(
             }
 
             if (isTriggered && shouldTriggerAlert(threshold)) {
-                val directionText = if (threshold.direction == "ABOVE") "rose above" else "fell below"
-                val labelText = if (threshold.label.isNotEmpty()) " (${threshold.label})" else ""
+                val labelText = if (threshold.label.isNotEmpty()) " - ${threshold.label}" else ""
 
                 // Fire notification callback
                 triggerNotification(
                     "Gold Alert!",
-                    "Gold has $directionText $${threshold.targetPrice}! Current: $${currentPrice}$labelText"
+                    "Gold price has reached your threshold limit: $${threshold.targetPrice}$labelText"
                 )
 
                 // Update database (deactivate threshold and set triggered timestamp)

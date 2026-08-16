@@ -1,0 +1,5 @@
+/build/
+/app/androidApp/build/
+/app/sharedLogic/build/
+/.gradle/
+/app/sharedLogic/build/.transforms/
