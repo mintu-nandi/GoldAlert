@@ -1,0 +1,123 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.bullish.goldalert.sharedLogic.test" >
+4
+5    <uses-sdk
+5-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:5:5-74
+6        android:minSdkVersion="28"
+6-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:5:15-41
+7        android:targetSdkVersion="36" />
+7-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:5:42-71
+8
+9    <instrumentation
+9-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:9:5-11:88
+10        android:name="androidx.test.runner.AndroidJUnitRunner"
+10-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:9:22-76
+11        android:label="Tests for com.bullish.goldalert.sharedLogic.test"
+11-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:11:22-86
+12        android:targetPackage="com.bullish.goldalert.sharedLogic.test" />
+12-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:10:22-84
+13
+14    <permission
+14-->[androidx.core:core:1.13.1] /Users/mintunandi/.gradle/caches/9.1.0/transforms/65b43d087cbcaaccd329c6427a26238b/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+15        android:name="com.bullish.goldalert.sharedLogic.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.13.1] /Users/mintunandi/.gradle/caches/9.1.0/transforms/65b43d087cbcaaccd329c6427a26238b/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.13.1] /Users/mintunandi/.gradle/caches/9.1.0/transforms/65b43d087cbcaaccd329c6427a26238b/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.bullish.goldalert.sharedLogic.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.13.1] /Users/mintunandi/.gradle/caches/9.1.0/transforms/65b43d087cbcaaccd329c6427a26238b/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.13.1] /Users/mintunandi/.gradle/caches/9.1.0/transforms/65b43d087cbcaaccd329c6427a26238b/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+19    <uses-permission android:name="android.permission.INTERNET" />
+19-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/mintunandi/.gradle/caches/9.1.0/transforms/7730a8e24619e9f818dab60e125bd1ff/transformed/okhttp-release/AndroidManifest.xml:8:5-67
+19-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/mintunandi/.gradle/caches/9.1.0/transforms/7730a8e24619e9f818dab60e125bd1ff/transformed/okhttp-release/AndroidManifest.xml:8:22-64
+20
+21    <application
+21-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:7:5-46
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.13.1] /Users/mintunandi/.gradle/caches/9.1.0/transforms/65b43d087cbcaaccd329c6427a26238b/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+23        android:debuggable="true" >
+23-->/Users/mintunandi/AndroidStudioProjects/GoldAlert/app/sharedLogic/build/intermediates/tmp/manifest/test/tempFile1ProcessTestManifest18445049377519582333.xml:7:18-43
+24        <service
+24-->[androidx.room:room-runtime-android:2.8.4] /Users/mintunandi/.gradle/caches/9.1.0/transforms/0f260acdf7fc065422ab3e588a70bd67/transformed/room-runtime/AndroidManifest.xml:24:9-28:63
+25            android:name="androidx.room.MultiInstanceInvalidationService"
+25-->[androidx.room:room-runtime-android:2.8.4] /Users/mintunandi/.gradle/caches/9.1.0/transforms/0f260acdf7fc065422ab3e588a70bd67/transformed/room-runtime/AndroidManifest.xml:25:13-74
+26            android:directBootAware="true"
+26-->[androidx.room:room-runtime-android:2.8.4] /Users/mintunandi/.gradle/caches/9.1.0/transforms/0f260acdf7fc065422ab3e588a70bd67/transformed/room-runtime/AndroidManifest.xml:26:13-43
+27            android:exported="false" />
+27-->[androidx.room:room-runtime-android:2.8.4] /Users/mintunandi/.gradle/caches/9.1.0/transforms/0f260acdf7fc065422ab3e588a70bd67/transformed/room-runtime/AndroidManifest.xml:27:13-37
+28
+29        <provider
+29-->[androidx.emoji2:emoji2:1.3.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/28d553cb42bde3701ea43ac52617aaa1/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+30            android:name="androidx.startup.InitializationProvider"
+30-->[androidx.emoji2:emoji2:1.3.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/28d553cb42bde3701ea43ac52617aaa1/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+31            android:authorities="com.bullish.goldalert.sharedLogic.test.androidx-startup"
+31-->[androidx.emoji2:emoji2:1.3.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/28d553cb42bde3701ea43ac52617aaa1/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+32            android:exported="false" >
+32-->[androidx.emoji2:emoji2:1.3.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/28d553cb42bde3701ea43ac52617aaa1/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+33            <meta-data
+33-->[androidx.emoji2:emoji2:1.3.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/28d553cb42bde3701ea43ac52617aaa1/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+34                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+34-->[androidx.emoji2:emoji2:1.3.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/28d553cb42bde3701ea43ac52617aaa1/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+35                android:value="androidx.startup" />
+35-->[androidx.emoji2:emoji2:1.3.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/28d553cb42bde3701ea43ac52617aaa1/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+36            <meta-data
+36-->[androidx.lifecycle:lifecycle-process:2.11.0-beta01] /Users/mintunandi/.gradle/caches/9.1.0/transforms/9c9dadbd00f8c23ef23f89f285dc3a87/transformed/lifecycle-process-2.11.0-beta01/AndroidManifest.xml:29:13-31:52
+37                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+37-->[androidx.lifecycle:lifecycle-process:2.11.0-beta01] /Users/mintunandi/.gradle/caches/9.1.0/transforms/9c9dadbd00f8c23ef23f89f285dc3a87/transformed/lifecycle-process-2.11.0-beta01/AndroidManifest.xml:30:17-78
+38                android:value="androidx.startup" />
+38-->[androidx.lifecycle:lifecycle-process:2.11.0-beta01] /Users/mintunandi/.gradle/caches/9.1.0/transforms/9c9dadbd00f8c23ef23f89f285dc3a87/transformed/lifecycle-process-2.11.0-beta01/AndroidManifest.xml:31:17-49
+39            <meta-data
+39-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/mintunandi/.gradle/caches/9.1.0/transforms/7730a8e24619e9f818dab60e125bd1ff/transformed/okhttp-release/AndroidManifest.xml:16:13-18:52
+40                android:name="okhttp3.internal.platform.PlatformInitializer"
+40-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/mintunandi/.gradle/caches/9.1.0/transforms/7730a8e24619e9f818dab60e125bd1ff/transformed/okhttp-release/AndroidManifest.xml:17:17-77
+41                android:value="androidx.startup" />
+41-->[com.squareup.okhttp3:okhttp-android:5.3.2] /Users/mintunandi/.gradle/caches/9.1.0/transforms/7730a8e24619e9f818dab60e125bd1ff/transformed/okhttp-release/AndroidManifest.xml:18:17-49
+42            <meta-data
+42-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+43                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+43-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+44                android:value="androidx.startup" />
+44-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+45        </provider>
+46
+47        <receiver
+47-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+48            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+48-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+49            android:directBootAware="false"
+49-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+50            android:enabled="true"
+50-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+51            android:exported="true"
+51-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+52            android:permission="android.permission.DUMP" >
+52-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+53            <intent-filter>
+53-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+54                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+54-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+54-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+55            </intent-filter>
+56            <intent-filter>
+56-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+57                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+57-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+57-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+58            </intent-filter>
+59            <intent-filter>
+59-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+60                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+60-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+60-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+61            </intent-filter>
+62            <intent-filter>
+62-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+63                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+63-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+63-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mintunandi/.gradle/caches/9.1.0/transforms/f4ddc0627906c7ab7cfb3fc6c438b25c/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+64            </intent-filter>
+65        </receiver>
+66    </application>
+67
+68</manifest>

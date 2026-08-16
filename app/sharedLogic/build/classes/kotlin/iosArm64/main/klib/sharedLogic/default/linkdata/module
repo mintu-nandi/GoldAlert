@@ -1,0 +1,2 @@
+
+<GoldAlert.app:sharedLogic>: com.example.goldalert.data.local:$com.example.goldalert.data.local.dao:+com.example.goldalert.data.local.encryption:'com.example.goldalert.data.local.entity:"com.example.goldalert.data.network:(com.example.goldalert.data.network.model:%com.example.goldalert.data.repository:com.example.goldalert.di:'com.example.goldalert.domain.repository:$com.example.goldalert.domain.usecase:"com.example.goldalert.presentation:(com.example.goldalert.presentation.model
